@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>太原师范学院文学院</title>
+<link rel="stylesheet" href="css/style1.css" type="text/css" media="all"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="images/logo1.png" width="128" height="58">
+  </div>
+  <div class="logo-name"></div>
+  <div class="form-tools"></div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+    	<li><a href="index.html">首页</a></li>
+        <li><a href="udetail.html">院系概况</a></li>
+        <li><a href="list-text1.html">新闻中心</a></li>
+        <li><a href="list-teacher.html">师资情况</a></li>
+        <li><a href="list-text3.html">学术研究</a></li>
+        <li><a href="list-school.html">美丽校园</a></li>
+    	<li><a href="#">学习园地</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">意见反馈</a></li>
+    </ul>
+</div>
+<div id="slider-box" style="background:url(images/slider3.jpg) center center;"></div>
+<div id="detail2-box" class="clearfix">
+	<div class="tit-80"><a href="index.html">师资情况太原师范学院文学院</a> - 师资情况</div>
+    <div class="tabula-box">
+    	<div class="max-tit">师资情况</div>
+        <ul>
+            <li><a href="list-teacher.html">硕士生导师</a></li>
+            <li><a href="list-teacher.html">古代文学</a></li>
+            <li><a href="list-teacher.html">现当代文学</a></li>
+            <li><a href="list-teacher.html">文艺学</a></li>
+            <li><a href="list-teacher.html">语言学</a></li>
+            <li><a href="list-teacher.html">新闻传播学</a></li>
+            <li><a href="list-teacher.html">大学语文</a></li>
+        </ul>
+    </div>
+    
+    <div class="content-box">
+    	<h1>师资情况 - 白杰</h1>
+    <div>
+      <p><img src="images/b2.jpg" width="205" height="142" hspace="250" vspace="10"></p>
+      <p>　　白杰，男，1981年生，山西榆社人。现任太原师范学院副教授、硕士生导师，主要从事中西诗学比较研究。著有《嬗变与重建》、《中国现代文学读本》、《中国现当代文学史综合教程》（合作）等；在《文艺理论与批评》《文艺争鸣》《中西文化比较》《学术探索》等重要刊物发表学术论文三十余篇；主持省级课题三项，主研国家社科基金项目&ldquo;美国后现代主义诗歌与中国第三代诗歌研究&rdquo;；曾赴北京大学、韩国外国语大学进行学术交流；近年获山西省社科联重点研究成果三等奖，作为主要完成人两次获&ldquo;山西省教学成果一等奖&rdquo;。</p>
+    </div>
+    </div>
+</div>
+
+<div id="div6">Copyright 2010-2015　太原师范学院<a href="www.tynu.edu.cn">网址：www.tynu.edu.cn</a>　　　地址：陕西省晋中榆次区大学街319号　邮编：030619</div>
+</body>
+</html>
+

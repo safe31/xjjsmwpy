@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>太原师范学院文学院</title>
+<link rel="stylesheet" href="css/style1.css" type="text/css" media="all"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="images/logo1.png" width="128" height="58">
+  </div>
+  <div class="logo-name"></div>
+  <div class="form-tools"></div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+    	<li><a href="index.html">首页</a></li>
+        <li><a href="udetail.html">院系概况</a></li>
+        <li><a href="list-text1.html">新闻中心</a></li>
+        <li><a href="list-teacher.html">师资情况</a></li>
+        <li><a href="list-text3.html">学术研究</a></li>
+        <li><a href="list-school.html">美丽校园</a></li>
+    	<li><a href="#">学习园地</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">意见反馈</a></li>
+    </ul>
+</div>
+<div id="slider-box" style="background:url(images/slider3.jpg) center center;"></div>
+<!-- detail -->
+<div id="detail2-box" class="clearfix">
+	<div class="tit-80"><a href="index.html">太原师范学院文学院</a> - 新闻中心</div>
+  <div class="tabula-box">
+   	<div class="max-tit">新闻中心</div>
+      <ul>
+          <li><a href="list-text1.html">基层动态</a></li>
+          <li><a href="list-text1.html">部门通知</a></li>
+      </ul>
+    </div>
+    
+    <div class="content-box">
+    	<h1>文学院18级广播电视学专业举办首届诗词大赛</h1>
+        <div class="content">
+   	    <p>　　为弘扬中华传统文化，丰富学生课余生活，12月5日中午13时30分，文学院18级广播电视学专业在汇文书院A201举办了首届诗词大赛。辅导员张盼盼出席了本次比赛，18级广播电视学专业81名学生参加了比赛。此次比赛由石芸和代英鑫两位同学主持。</p>
+   	    <p><img src="images/d1.jpg" width="553" height="369" hspace="80" vspace="10"></p>
+   	    <p>　　本届诗词大赛分为&quot;移花接木&quot;、&quot;合力断金&quot;和&quot;飞花令&quot;三个环节。&quot;移花接木&quot;环节由八十道诗词填空题组成，同学们依次补充诗句，答对一句得一分，两班同学们精彩激烈的竞答迅速将比赛气氛带入高潮。在随后的&quot;合力断金&quot;环节中，比赛双方各选出五名代表抽选题目背诵古诗，背诵流畅即可得分。十位同学流利完整地背诵出了所选诗词，他们深厚的古诗文功底和良好的现场发挥赢得了在场同学的热烈掌声。最后进行的是&quot;飞花令&quot;环节。本环节以&quot;风花雪月春秋&quot;为题，采取三局两胜制，参赛学生需背诵出带有题目字眼的诗句。比赛过程中，面对主持人的提问，双方参赛选手始终从容不迫，应答如流。最终，广播电视学1805班以五分的优势赢得了本次诗词大赛第一名。</p>
+   	    <p>&nbsp;</p>
+   	    <img src="images/d2.jpg" width="553" height="369" hspace="80" vspace="10">
+<p>　　赛后，张盼盼老师作总结发言。在对所有参赛选手提出表扬的同时，张盼盼老师也对同学们提出了新的期盼与要求。她说，除了扎实的专业知识外，深厚的文学素养也是每个学生应该具备的，同学们要更加重视阅读量的积累，多读书读好书，培养浓厚的文化底蕴。</p>
+   	    <p> 　　&quot;箱处卷轴心常逸，腹有诗书气自华&quot;。此次诗词大赛的举办，在为同学们提供一个自我展示平台的同时，也帮助同学们重新领略到中华诗词的独特魅力。此外，本次活动的开展对于陶冶学生情操，营造良好的学习氛围也起到了积极的推动作用。</p>
+   	    <p>&nbsp;</p>
+   	    <p>&nbsp;</p>
+   	    <p>&nbsp;</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　撰稿｜赵雪</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　摄影｜18级广电专业学生</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　审核丨刘晋云<br>
+ 	      </p>
+   	    <p><br />
+ 	      </p>
+      </div>
+      <div class="n-p-box clearfix"></div>
+    </div>
+</div>
+
+<div id="div6">Copyright 2010-2015　太原师范学院<a href="www.tynu.edu.cn">网址：www.tynu.edu.cn</a>　　　地址：陕西省晋中榆次区大学街319号　邮编：030619</div>
+</body>
+</html>
+

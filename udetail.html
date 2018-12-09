@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>太原师范学院文学院</title>
+<link rel="stylesheet" href="css/style1.css" type="text/css" media="all"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="images/logo1.png" width="128" height="58">
+  </div>
+  <div class="logo-name"></div>
+  <div class="form-tools"></div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+    	<li><a href="index.html">首页</a></li>
+        <li><a href="udetail.html">院系概况</a></li>
+        <li><a href="list-text1.html">新闻中心</a></li>
+        <li><a href="list-teacher.html">师资情况</a></li>
+        <li><a href="list-text3.html">学术研究</a></li>
+        <li><a href="list-school.html">美丽校园</a></li>
+    	<li><a href="#">学习园地</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">意见反馈</a></li>
+    </ul>
+</div>
+<div id="slider-box" style="background:url(images/slider3.jpg) center center;"></div>
+<!-- detail -->
+<div id="detail2-box" class="clearfix">
+	<div class="tit-80"><a href="index.html">太原师范学院文学院</a> - <a href="udetail.html">学院概况 </a>- 院系简介</div>
+  <div class="tabula-box">
+   	<div class="max-tit">学院概况</div>
+      <ul>
+          <li><a href="udetail.html">院系简介</a></li>
+          <li><a href="udetail1.html">党政领导</a></li>
+          <li><a href="udetail2.html">机构设置</a></li>
+      </ul>
+    </div>
+    
+    <div class="content-box">
+    	<h1>太原师范学院文学院简介</h1>
+        <div class="content">
+   	    <p>　　太原师范学院文学院是我校成立时间最早、师资力量最强、规模最大的二级教学单位，目前承担着约2100名全日制本科生和硕士研究生的教学工作。2017年3月学校进行院系调整，原文学院、影视艺术系和基础部大学语文教研室三个部门组建成立新的文学院，其中影视艺术系仍保留独立的院系建制，两个院系以一套人马和两块牌子的机制进行合署办公。</p>
+   	    <p>文学院拥有&quot;中国语言文学&quot;一级重点扶持学科，2013年获批&quot;中国语言文学&quot;一级学科硕士学位授权点，在中国古代文学、中国现当代文学、文艺学、汉语言文字学、比较文学与世界文学五个二级学科方向上招生。2014年，文学院又获批学科教学（语文）专业学位授权。此外，文学院还获批了山西省首家人文社科重点研究基地——&quot;区域文学研究中心&quot;，影视艺术系获批了山西省电影家协会&quot;影视艺术研究中心&quot;。在诸多平台的有力支持下，文学院的教师、学生获得了丰富的学术资源、充足的实践机会，在教学科研领域取得一系列突出成绩。 </p>
+   	    <p>　　文学院拥有一支理论基础过硬、专业素养精深、课堂教学经验丰富的优秀师资队伍。文学院共有教职工79人，其中教授7人，副教授19人，博士20人，硕士生导师16人，入选国家特支计划&quot;万人计划&quot;青年拔尖人才1人，山西省高校优秀学术带头人3人，山西省学术技术带头人1人。文学院拥有一支优秀的教学、科研和创作团队，许多教师毕业于北京大学、中国人民大学、中国传媒大学、中央名族大学、北京师范大学、复旦大学等名校重点专业。</p>
+   	    <p>文学院中国语言文学学科下设汉语言文学、新闻传播两个专业；影视艺术系戏剧与影视学科下设戏剧影视文学、广播电视编导、播音主持三个本科专业。拥有图书资料室、模拟实验剧场、大型演播室、非编制作设备、专业微电影拍摄设备、专业录音设备等教学硬件设施，为教学科研和学生实践提供强有力的保障。</p>
+   	    <p>　　近五年来，文学院承担国家级科研项目7项（国家社科项目3项，教育部人文社科项目4项），承担省级项目30余项，纵向经费达到250万元；在《文艺研究》《中国现代文学研究丛刊》《文艺理论与批评》《文艺争鸣》《当代修辞学》《现代传播》《当代电影》，以及《人民日报》、《光明日报》等核心刊物上发表论文百余篇，部分成果被《新华文摘》、中国社科院《马克思主义文摘》、《中国人民大学复印资料》等刊物转载。</p>
+   	    <p>　　文学院在加强科研提升办学层次的同时，又不断夯实教学根基，努力提升教育教学质量。近年主持本科、研究生教改项目十余项，建设有&quot;中国现当代文学&quot;省级精品资源共享课一门，获山西省教学成果一等奖两次、二等奖两次，主编的&quot;中国现当代文学史综合教程&quot;系列教材由北京师范大学出版社出版，并被纳入全国高师院校汉语言文学专业通用教材。有2名教师获&quot;山西省教学名师&quot;称号，有3名教师获得山西省高等院校中青年教师教学技能大赛一等奖。</p>
+   	    <p>　　文学院在教学过程中，特别注重学生实践能力的培养，已形成了课程见习、实习及实验教学等多种实践培养体系，多年来与太原师院附中、山大附中、省实验中学多所省重点中学，与央视记录频道、山西电视台、山西日报、太原晚报等新闻单位建立了良好的合作关系。同时，影视艺术系也是中国公益微电影联合主办高校之一，是中国高校影视学会微电影分会的理事单位之一，也是中国传媒大学半夏的纪念展映活动的联盟校之一。</p>
+   	    <p>　　文学院学生专业能力培养工作成效显著，有不少学生考取了北京大学、复旦大学、中国人民大学、北京师范大学、浙江大学、中国传媒大学等重点高校的硕士研究生。各专业培养的学生均具有较为广阔的就业前景，深受用人单位的欢迎，其中部分学生成为省内各中学的语文教师，有的还成为教学骨干，另外还有许多毕业生走上了报社、宣传、文化传媒等行业的工作岗位，为经济和社会发展贡献着自己的力量。<br>
+   	    </p>
+   	    <p><br />
+ 	      </p>
+      </div>
+      <div class="n-p-box clearfix"></div>
+    </div>
+</div>
+
+<div id="div6">Copyright 2010-2015　太原师范学院<a href="www.tynu.edu.cn">网址：www.tynu.edu.cn</a>　　　地址：陕西省晋中榆次区大学街319号　邮编：030619</div>
+</body>
+</html>
+

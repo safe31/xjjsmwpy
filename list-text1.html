@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>太原师范学院文学院</title>
+<link rel="stylesheet" href="css/style1.css" type="text/css" media="all"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="images/logo1.png" width="128" height="58">
+  </div>
+  <div class="logo-name"></div>
+  <div class="form-tools"></div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+    	<li><a href="index.html">首页</a></li>
+        <li><a href="udetail.html">院系概况</a></li>
+        <li><a href="list-text1.html">新闻中心</a></li>
+        <li><a href="list-teacher.html">师资情况</a></li>
+        <li><a href="list-text3.html">学术研究</a></li>
+        <li><a href="list-school.html">美丽校园</a></li>
+    	<li><a href="#">学习园地</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">意见反馈</a></li>
+    </ul>
+</div>
+<div id="slider-box" style="background:url(images/slider2.jpg) center center;"></div>
+<!-- detail -->
+<div id="detail2-box" class="clearfix">
+	<div class="tit-80"><a href="index.html">太原师范学院文学院</a><a href="list-text2.html"></a> - 新闻中心</div>
+    <div class="tabula-box">
+    	<div class="max-tit">新闻中心</div>
+        <ul>
+            <li><a href="list-text1.html">基层动态</a><a href="#"></a></li>
+            <li><a href="list-text2.html">部门通知</a></li>
+        </ul>
+    </div>
+
+    
+    <div class="content-box">
+    	<h1>太原师范学院文学院 - 基层动态</h1>
+        <ul>
+        <li class="text"><a href="detail1.html">文学院18级广播电视学专业举办首届诗词大赛 <span>2018-12-06</span></a></li>
+            <li class="text"><a href="detail2.html">文学院举办 &quot;创新引领未来，创业成就梦想&quot;主题演讲比赛</a><span>2018-12-04</span></li>
+            <li class="text"><a href="detail2.html">文学院邀请吕梁市作协副主席白占全做学术讲座</a><span>2018-12-03</span></li>
+            <li class="text"><a href="detail2.html">文学院举行2019届本科毕业论文开题答辩</a><span>2018-11-29</span></li>
+            <li class="text"><a href="detail2.html">文学院举办&quot;汇文有约&quot;第十三期研究生学术沙龙</a><span>2018-11-28</span></li>
+            <li class="text"><a href="detail2.html">文学院喜获首届&quot;凝聚杯&quot;教职工篮球赛第三名</a><span>2018-11-26</span></li>
+            <li class="text"><a href="detail2.html">文学院邀请北京师范大学李运富教授做学术讲座</a><span>2018-11-24</span></li>
+        </ul>
+    </div>
+</div>
+
+<div id="div6">Copyright 2010-2015　太原师范学院<a href="www.tynu.edu.cn">网址：www.tynu.edu.cn</a>　　　地址：陕西省晋中榆次区大学街319号　邮编：030619</div>
+</body>
+</html>
+

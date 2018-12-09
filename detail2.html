@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>太原师范学院文学院</title>
+<link rel="stylesheet" href="css/style1.css" type="text/css" media="all"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="images/logo1.png" width="128" height="58">
+  </div>
+  <div class="logo-name"></div>
+  <div class="form-tools"></div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+    	<li><a href="index.html">首页</a></li>
+        <li><a href="udetail.html">院系概况</a></li>
+        <li><a href="list-text1.html">新闻中心</a></li>
+        <li><a href="list-teacher.html">师资情况</a></li>
+        <li><a href="list-text3.html">学术研究</a></li>
+        <li><a href="list-school.html">美丽校园</a></li>
+    	<li><a href="#">学习园地</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">意见反馈</a></li>
+    </ul>
+</div>
+<div id="slider-box" style="background:url(images/slider3.jpg) center center;"></div>
+<!-- detail -->
+<div id="detail2-box" class="clearfix">
+	<div class="tit-80"><a href="index.html">太原师范学院文学院</a> - 新闻中心</div>
+  <div class="tabula-box">
+   	<div class="max-tit">新闻中心</div>
+    <ul>
+          <li><a href="list-text1.html">基层动态</a></li>
+          <li><a href="list-text1.html">部门通知</a></li>
+    </ul>
+    </div>
+    
+    <div class="content-box">
+    	<h1>文学院举办 &quot;创新引领未来，创业成就梦想&quot;主题演讲比赛</h1>
+        <div class="content">
+   	    <p>　　12月3日中午，由文学院学生会青创部组织举办的&quot;创新引领未来，创业成就梦想&quot;主题演讲比赛复赛在文科楼A102落幕。文学院分团委副书记李晶、辅导员王爱应邀担当此次比赛评委，17、18级的12名同学参加了本次比赛。比赛由学生陈红红主持。</p>
+   	    <p><img src="images/d3.jpg" width="554" height="369" hspace="80" vspace="10"></p>
+   	    <p>　　经过初赛的比拼与淘汰，23名参赛同学中有12名脱颖而出，挺进复赛。比赛开始前，分团委副书记李晶就本次活动发表了讲话。她指出，本次比赛是在大众创业、万众创新的时代背景下举办的，目的是推动创新创业意识在我校的广泛传播，进而营造大胆创新、勇于追梦的良好氛围。她强调，学校第二课堂为此设立了专题板块，足以表明校领导对学子们创新创业活动的鼓励与支持，希望在座各位同学用最好的状态，赛出风格、赛出水平。</p>
+   	    <p><img src="images/d4.jpg" width="552" height="368" hspace="80" vspace="10"></p>
+   	    <p>　　随后12名同学依次上台进行演讲。围绕&quot;创新引领未来，创业成就梦想&quot;这一主题，参赛选手或从微商、互联网等当下热门创业平台切入，细析创业前景；或以实现梦想、追逐未来为切口，畅谈创新妙想。同学们用自信的姿态，尽情挥洒所念所想，展现他们的独有风采。两位评委老师以演讲内容、语言表达、形象风度和现场效果四个方面作为评分标准，进行最后的排名。最终，戏文1708班徐春会、广电1806班张卓然、戏文1707班刘子豪突出重围，获得此次演讲比赛的前三名。</p>
+   	    <p>据悉，此次演讲比赛是我校&quot;创新引领未来，创业成就梦想&quot;主题活动组织形式之一，由校团委主办，计算机系和美术系分团委承办。我院积极配合学校的相关安排，举办了主题演讲比赛，不仅使同学们对&quot;大众创业，万众创新&quot;有了基本认知，更为我校营造创新创业的良好氛围贡献了自己的力量。<br>
+ 	      </p>
+<p>&nbsp;</p>
+   	    <p>&nbsp;</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　撰稿｜曹钰</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　摄影｜张运迪</p>
+   	    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　审核丨刘晋云<br>
+ 	      </p>
+   	    <p><br />
+ 	      </p>
+      </div>
+      <div class="n-p-box clearfix"></div>
+    </div>
+</div>
+
+<div id="div6">Copyright 2010-2015　太原师范学院<a href="www.tynu.edu.cn">网址：www.tynu.edu.cn</a>　　　地址：陕西省晋中榆次区大学街319号　邮编：030619</div>
+</body>
+</html>
+
